@@ -1,0 +1,3 @@
+[submodule "jquery.engineer"]
+	path = jquery.engineer
+	url = git://github.com/jpoz/jquery.engineer.git

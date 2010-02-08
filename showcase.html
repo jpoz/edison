@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Edison showcase</title>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="jquery.engineer/lib/jquery.engineer.js"></script>
+	<script type="text/javascript" src="buttons.js"></script>
+	<script type="text/javascript" src="layout.js"></script>
+	<style type="text/css" media="screen">
+	 * {
+	   font-size: 12px;
+	   font-family: Tahoma, Geneva, sans-serif;
+	 }
+	 #showcase {
+	   width: 900px;
+	   margin: 10px auto;
+	 }
+	 #showcase th {
+	   background: lightgrey;
+	   width: 25%;
+	 }
+	 #showcase td {
+	   padding: 10px;
+	 }
+	 #showcase td, #showcase th {
+    text-align: center;
+    vertical-align: top;
+   }
+	</style>
+	<script type="text/javascript" charset="utf-8">
+	 $(document).ready(function() {
+      var gbutton1 = $.engineer.make('gbutton',  { text:'One' });
+      var gbutton2 = $.engineer.make('gbutton',  { text:'Two' });
+      var gspacer = $.engineer.make('gbutton_spacer');
+      var gbutton3 = $.engineer.make('gbutton',  { text:'Three' });
+      $('#gbutton').append(gbutton1).append(gbutton2).append(gspacer).append(gbutton3);
+      
+      var box = $.engineer.make('box', { content:'This is a box that you could put some information into.', title: "This is the Title"});
+      $('#box').append(box);
+      
+      var hud_tip = $.engineer.make('gbutton',  { text:'Hover Over me'}).behaveLike('hud_tip', {hud_text:"This is a hud tip"});
+      $('#hud_tip').append(hud_tip);
+    });
+	</script>
+</head>
+  <body>
+    <table id='showcase' cellspacing="0" cellpadding="0">
+      <tr>
+        <th>Gradient Buttons (gbutton)</th><th>Box (box)</th><th>Hud tip</th><th>..</th>
+      </tr>
+      <tr>
+        <td id='gbutton'></td><td id='box'></td><td id='hud_tip'><br/><br/></td><td></td>
+      </tr>
+    </table>
+  </body>
+</html>
+
