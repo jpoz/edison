@@ -116,7 +116,9 @@ $.engineer.define('hud_tip',{
       function(){
         var position = self.offset()
         var hud_height = self.hud.height();
-        self.hud.css('top',position.top - hud_height - 15).css('left',position.left).fadeIn(200);
+        var center_offset = (self.width() - self.hud.width())/2;
+
+        self.hud.css('top',position.top - hud_height - 15).css('left',position.left + center_offset).fadeIn(200);
       },
       function(){
         self.hud.fadeOut(200);

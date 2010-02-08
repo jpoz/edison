@@ -41,7 +41,7 @@
       var box = $.engineer.make('box', { content:'This is a box that you could put some information into.', title: "This is the Title"});
       $('#box').append(box);
       
-      var hud_tip = $.engineer.make('gbutton',  { text:'Hover Over me'}).behaveLike('hud_tip', {hud_text:"This is a hud tip"});
+      var hud_tip = $.engineer.make('gbutton',  { text:'Hover Over me'}).behaveLike('hud_tip', {hud_text:"<center>This is a hud tip.<br/>You can put information in here</center>"});
       $('#hud_tip').append(hud_tip);
     });
 	</script>
@@ -52,7 +52,7 @@
         <th>Gradient Buttons (gbutton)</th><th>Box (box)</th><th>Hud tip</th><th>..</th>
       </tr>
       <tr>
-        <td id='gbutton'></td><td id='box'></td><td id='hud_tip'><br/><br/></td><td></td>
+        <td id='gbutton'></td><td id='box'></td><td id='hud_tip'><br/><br/><br/></td><td></td>
       </tr>
     </table>
   </body>
