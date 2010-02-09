@@ -43,16 +43,24 @@
       
       var hud_tip = $.engineer.make('gbutton',  { text:'Hover Over me'}).behaveLike('hud_tip', {hud_text:"<center>This is a hud tip.<br/>You can put information in here</center>"});
       $('#hud_tip').append(hud_tip);
+      
+      var gprogress = $.engineer.make('gprogress',{starting:'0%'});
+      $('#gprogress').append(gprogress);
+      var progressButton = $.engineer.make('gbutton', { text:'Random' }).click(function() {
+        var per = Math.round(Math.random() * 100);
+        gprogress.send('setProgress',per + "%");
+      }).css('margin-top','5px');
+      $('#gprogress').append(progressButton);
     });
 	</script>
 </head>
   <body>
     <table id='showcase' cellspacing="0" cellpadding="0">
       <tr>
-        <th>Gradient Buttons (gbutton)</th><th>Box (box)</th><th>Hud tip</th><th>..</th>
+        <th>Gradient Buttons (gbutton)</th><th>Box (box)</th><th>Hud tip</th><th>Progress Bar (gprogess)</th>
       </tr>
       <tr>
-        <td id='gbutton'></td><td id='box'></td><td id='hud_tip'><br/><br/><br/></td><td></td>
+        <td id='gbutton'></td><td id='box'></td><td id='hud_tip'><br/><br/><br/></td><td id='gprogress'></td>
       </tr>
     </table>
   </body>

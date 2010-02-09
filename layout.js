@@ -105,29 +105,86 @@ $.engineer.define('hud_tip',{
         'z-index':'10000',
         'color':'white',
         'padding':'5px',
-        'opacity': '0.7'
       },
       html: options.hud_text
     })
     
     $('body').append(self.hud);
+    
+    self.animate_offset = 15;
 
     self.hover(
       function(){
         var position = self.offset()
         var hud_height = self.hud.height();
         var center_offset = (self.width() - self.hud.width())/2;
+        
+        var top_target = position.top - hud_height - 15;
+        var left_target = position.left + center_offset;
 
-        self.hud.css('top',position.top - hud_height - 15).css('left',position.left + center_offset).fadeIn(200);
+        self.hud.css('top',top_target - self.animate_offset).css('left',left_target).css('opacity','0').show();
+        self.hud.animate({
+          'top':top_target,
+          'opacity':'0.75'
+        },200);
       },
       function(){
-        self.hud.fadeOut(200);
+        var position = self.hud.offset()
+        self.hud.animate({
+          'top': position.top - self.animate_offset,
+          'opacity':'0.0'
+        }, 200,"linear", function(){  self.hud.hide(); });
       }
     )
     
     return publicMethods;
   }
 });
+
+$.engineer.define('gprogress',{
+  defaults: {
+    width: '100%',
+    starting: '0%'
+  },
+  structure: function(options) {
+    var progress_container = $('<div/>', {
+      css: {
+        'width':options.width,
+        'border':'1px solid #7C8494',
+        'padding':'1px',
+        'background':'white',
+        'height':'10px'
+      }
+    });
+    
+    var progress_bar = $('<div/>', {
+      css: {
+        'background':'#C9D8F8',
+        'width':options.starting,
+        'line-height':'0',
+        'height':'100%'
+      },
+      html: '&nbsp;'
+    });
+    
+    progress_container.data('progress_bar',progress_bar);
+    
+    return progress_container.append(progress_bar);
+  },
+  behavior: function(options) {
+    var self = this;
+    var publicMethods = {};
+    var progress_bar = self.data('progress_bar');
+
+    publicMethods.setProgress = function(percentage) {
+      progress_bar.animate({
+        'width':percentage
+      }, 200);
+    }
+    
+    return publicMethods;
+  }
+})
 
 
 
